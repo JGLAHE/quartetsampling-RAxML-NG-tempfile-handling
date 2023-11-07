@@ -62,12 +62,12 @@ def generate_argparser():
                               "as used by RAxML."))
     parser.add_argument("--reps", "--number-of-reps", type=int, nargs=1,
                         # Prev -N
-                        required=True, default=100, dest="reps",
+                        default=100, dest="reps",
                         help=("The number of replicate quartet topology "
                               "searches to be performed at each node."))
     parser.add_argument("--threads", "--number-of-threads", type=int, nargs=1,
                         # Prev -T
-                        required=True, default=1, dest="threads",
+                        default=1, dest="threads",
                         help=("The number of parallel threads to be used "
                               "by Python for quartet topology searches."))
     parser.add_argument("--lnlike", "--lnlike-thresh", type=float, nargs=1,
