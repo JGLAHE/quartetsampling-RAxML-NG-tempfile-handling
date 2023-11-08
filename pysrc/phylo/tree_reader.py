@@ -35,9 +35,9 @@ def read_tree_string(instr):
     start = True
     keepgoing = True
     curnode = None
-    while keepgoing is True:
+    while keepgoing:
         if nextchar == "(":
-            if start is True:
+            if start:
                 root = Node()
                 curnode = root
                 start = False
@@ -53,9 +53,7 @@ def read_tree_string(instr):
             nextchar = instr[index]
             name = ""
             while True:
-                if nextchar == ',' or nextchar == ')' or nextchar == ':' \
-                        or nextchar == ';' or nextchar == '[':
-                    break
+                while not (nextchar in [',', ')', ':', ';', '[']):
                 name += nextchar
                 index += 1
                 nextchar = instr[index]
@@ -69,17 +67,14 @@ def read_tree_string(instr):
             nextchar = instr[index]
             brlen = ""
             while True:
-                if nextchar == ',' or nextchar == ')' or nextchar == ':' \
-                        or nextchar == ';' or nextchar == '[':
-                    break
+                while not (nextchar in [',', ')', ':', ';', '[']):
                 brlen += nextchar
                 index += 1
                 nextchar = instr[index]
             curnode.length = float(brlen)
             index -= 1
         elif nextchar == ' ':
-            index += 1
-            nextchar = instr[index]
+            pass
         else:  # this is an external named node
             newnode = Node()
             curnode.add_child(newnode)
@@ -87,17 +82,17 @@ def read_tree_string(instr):
             curnode.istip = True
             name = ""
             while True:
-                if nextchar == ',' or nextchar == ')' == nextchar == ':' \
-                        or nextchar == ';' or nextchar == '[':
-                    break
+                while not (nextchar in [',', ')', ':', ';', '[']):
                 name += nextchar
                 index += 1
                 nextchar = instr[index]
             curnode.label = name
             index -= 1
-        if index < len(instr) - 1:
-            index += 1
-        nextchar = instr[index]
+        index += 1
+        if index < len(instr):
+            nextchar = instr[index]
+        else:
+            break
     return root
 
 
