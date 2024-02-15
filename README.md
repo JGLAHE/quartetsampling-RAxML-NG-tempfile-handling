@@ -5,8 +5,7 @@
 Quartet Sampling is a method to analyze molecular phylogenies by calculating branch support using repeated sampling of quartets.  Quartet Sampling differs from other support methods by combining a set of of tests into a single, efficient framework to address phylogenetic discordance.  QS is particularly useful for very large and data-sparse alignments or large phylogenomic datasets.
 
 ## This Fork ##
-For runs with large --reps & --max-random-sample-proportion that select RAxML-NG as the engine:
-In this fork, superfluous RAxML-NG job files are deleted as they're generated, c.f. the master branch where they accumulate until the end of the run. On a ~500 locus dataset w/--reps > 3000 --max-random-sample-proportion > 0.5, this can amount to >1TB over the course of a run (which has to be provisioned for). The same dataset can be kept at ~12GB when using the version in this fork, which is easier to fit/run in RAM. I'm planning to extend these changes to the other ML options.
+For runs with large --reps & --max-random-sample-proportion that select RAxML-NG as the engine, superfluous RAxML-NG job files are deleted as they're generated, c.f. the master branch where they accumulate until the end of the run. For my own dataset of ~500 loci (--reps > 3000, --max-random-sample-proportion > 0.5) this amounted to >1TB over the course of a run (which had to be provisioned for). The same dataset can be kept at ~12GB using the version in this fork; this is easier to fit/run in RAM.
 
 ## Update Version 1.3.1 ##
 Version 1.3.1 - Adds RESULTS.node.count.csv that provides counts and representative topologies for the three quartet arragements.  This is useful when QD is low in determining the more common discordant option.
